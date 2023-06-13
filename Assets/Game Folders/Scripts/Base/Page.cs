@@ -39,6 +39,8 @@ public enum PageName
     Menu,
     Help,
     Level,
-    Load
+    Load,
+    Game,
+    Pause
 }
 

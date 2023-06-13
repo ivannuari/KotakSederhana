@@ -39,5 +39,9 @@ public enum GameState
     Menu,
     Help,
     Load,
-    Level
+    Level,
+    Game,
+    Pause,
+    Setting,
+    Save
 }
