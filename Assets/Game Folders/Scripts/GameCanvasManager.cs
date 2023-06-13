@@ -24,11 +24,13 @@ public class GameCanvasManager : CanvasManager
         switch (newState)
         {
             case GameState.Game:
+                Time.timeScale = 1f;
                 SetPage(PageName.Game);
                 break;
             case GameState.Pause:
                 SetPage(PageName.Pause);
                 SetWidget(WidgetName.Pause);
+                Time.timeScale = 0f;
                 break;
             case GameState.Setting:
                 SetWidget(WidgetName.Setting);

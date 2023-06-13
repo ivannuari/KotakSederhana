@@ -1,19 +1,29 @@
 using Ivannuari;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingWidget : Widget
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private TMP_Dropdown dropdown_quality;
+    [SerializeField] private Slider slider_sensitivity;
+    [SerializeField] private TMP_Text label_slider;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private Button b_default;
+    [SerializeField] private Button b_back;
+
+    private void Start()
     {
-        
+        slider_sensitivity.onValueChanged.AddListener((float val) =>
+        {
+            label_slider.text = val.ToString("0");
+        });
+        b_default.onClick.AddListener(() =>
+        {
+
+        });
+        b_back.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Pause));
     }
 }

@@ -19,6 +19,7 @@ public class PauseWidget : Widget
         b_setting.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Setting));
         b_exit.onClick.AddListener(() =>
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Main Menu");
         });
     }

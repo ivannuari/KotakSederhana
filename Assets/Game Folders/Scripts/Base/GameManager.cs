@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,6 +9,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] private GameState currentState;
+
+    private string savePath;
+    [SerializeField] private SaveData saveDataFiles;
 
     public delegate void GameStateDelegate(GameState newState);
     public event GameStateDelegate OnStateChange;
@@ -22,6 +27,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+
+        savePath = Application.persistentDataPath;
     }
 
     public void ChangeState(GameState state)
@@ -29,6 +36,25 @@ public class GameManager : MonoBehaviour
         currentState = state;
         Debug.Log("CURRENT STATE : " + state);
         OnStateChange?.Invoke(state);
+    }
+
+    public void SaveData(string saveName)
+    {
+        string path = savePath + "saveData.json";
+
+        SaveFile newFile = new SaveFile(saveName);
+        saveDataFiles.allSaveData.Add(newFile);
+
+        string json = JsonUtility.ToJson(saveDataFiles);
+        File.WriteAllText(path, json);
+    }
+
+    public void LoadData()
+    {
+        string path = savePath + "saveData.json";
+
+        string json = File.ReadAllText(path);
+        saveDataFiles = JsonUtility.FromJson<SaveData>(json);
     }
 }
 
@@ -44,4 +70,23 @@ public enum GameState
     Pause,
     Setting,
     Save
+}
+
+
+[System.Serializable]
+public class SaveData
+{
+    public List<SaveFile> allSaveData = new List<SaveFile>();
+}
+
+
+[System.Serializable]
+public class SaveFile
+{
+    public string nama;
+
+    public SaveFile(string saveName)
+    {
+        nama = saveName;
+    }
 }
