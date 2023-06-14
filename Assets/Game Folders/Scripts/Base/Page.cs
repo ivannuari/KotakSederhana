@@ -41,6 +41,7 @@ public enum PageName
     Level,
     Load,
     Game,
-    Pause
+    Pause,
+    EditMode
 }
 

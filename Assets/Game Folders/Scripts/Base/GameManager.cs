@@ -69,7 +69,8 @@ public enum GameState
     Game,
     Pause,
     Setting,
-    Save
+    Save,
+    EditMode
 }
 
 

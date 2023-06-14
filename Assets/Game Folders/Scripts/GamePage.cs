@@ -15,6 +15,6 @@ public class GamePage : Page
     private void Start()
     {
         b_pause.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Pause));
-
+        b_build.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.EditMode));
     }
 }
