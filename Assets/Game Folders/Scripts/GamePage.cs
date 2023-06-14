@@ -12,9 +12,18 @@ public class GamePage : Page
     [SerializeField] private Button b_build;
     [SerializeField] private Button b_delete;
 
+    [SerializeField] private GameObject numberWidget;
+    private bool isNumberWidgetActive = false;
+
     private void Start()
     {
         b_pause.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Pause));
         b_build.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.EditMode));
+
+        b_menu.onClick.AddListener(() =>
+        {
+            numberWidget.SetActive(!isNumberWidgetActive);
+            isNumberWidgetActive = !isNumberWidgetActive;
+        });
     }
 }

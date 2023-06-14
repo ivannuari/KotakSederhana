@@ -17,5 +17,6 @@ public enum WidgetName
 {
     Pause,
     Save,
-    Setting
+    Setting,
+    Number
 }

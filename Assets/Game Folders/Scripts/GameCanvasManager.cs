@@ -8,7 +8,7 @@ public class GameCanvasManager : CanvasManager
 {
     [SerializeField] private Widget[] allWidgets;
 
-    private void Awake()
+    private void Start()
     {
         GameManager.Instance.OnStateChange += Instance_OnStateChange;
         GameManager.Instance.ChangeState(GameState.Game);
@@ -37,6 +37,9 @@ public class GameCanvasManager : CanvasManager
                 break;
             case GameState.Save:
                 SetWidget(WidgetName.Save);
+                break;
+            case GameState.EditMode:
+                SetPage(PageName.EditMode);
                 break;
         }
     }

@@ -14,18 +14,28 @@ public class MenuEditPage : Page
     [SerializeField] private Button b_vehicle;
     [SerializeField] private Button b_option;
 
-    [SerializeField] private Button b_furniture;
-    [SerializeField] private Button b_street;
-    [SerializeField] private Button b_cartoon;
-    [SerializeField] private Button b_buildings;
-    [SerializeField] private Button b_people;
-    [SerializeField] private Button b_primitive;
-    [SerializeField] private Button b_roads;
+    [SerializeField] private GameObject[] panels;
 
     private void Start()
     {
         b_close.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Game));
 
-        
+        b_props.onClick.AddListener(() => SetPanel(0));
+        b_tools.onClick.AddListener(() => SetPanel(1));
+        b_ragdoll.onClick.AddListener(() => SetPanel(2));
+        b_vehicle.onClick.AddListener(() => SetPanel(3));
+        b_option.onClick.AddListener(() => SetPanel(4));
+
+        b_props.Select();
+    }
+
+    private void SetPanel(int n)
+    {
+        foreach (var p in panels)
+        {
+            p.SetActive(false);
+        }
+
+        panels[n].SetActive(true);
     }
 }
