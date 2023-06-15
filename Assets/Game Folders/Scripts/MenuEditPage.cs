@@ -16,6 +16,13 @@ public class MenuEditPage : Page
 
     [SerializeField] private GameObject[] panels;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        b_props.Select();
+        SetPanel(0);
+    }
+
     private void Start()
     {
         b_close.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Game));
@@ -25,8 +32,6 @@ public class MenuEditPage : Page
         b_ragdoll.onClick.AddListener(() => SetPanel(2));
         b_vehicle.onClick.AddListener(() => SetPanel(3));
         b_option.onClick.AddListener(() => SetPanel(4));
-
-        b_props.Select();
     }
 
     private void SetPanel(int n)

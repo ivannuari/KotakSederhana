@@ -21,10 +21,12 @@ public class SettingWidget : Widget
             float temp = val * 100f;
             label_slider.text = temp.ToString("0");
         });
+
         b_default.onClick.AddListener(() =>
         {
 
         });
+
         b_back.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Pause));
     }
 }

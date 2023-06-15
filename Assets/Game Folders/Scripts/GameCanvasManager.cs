@@ -1,4 +1,5 @@
 using Ivannuari;
+using StarterAssets;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,9 @@ using UnityEngine;
 public class GameCanvasManager : CanvasManager
 {
     [SerializeField] private Widget[] allWidgets;
+
+    [SerializeField] private Joystick joystick;
+    [SerializeField] private StarterAssetsInputs controller;
 
     private void Start()
     {
@@ -42,6 +46,12 @@ public class GameCanvasManager : CanvasManager
                 SetPage(PageName.EditMode);
                 break;
         }
+    }
+
+    public void Update()
+    {
+        Vector2 inputJs = new Vector2(joystick.Horizontal, joystick.Vertical);
+        controller.MoveInput(inputJs);
     }
 
     public void SetWidget(WidgetName findWidget)

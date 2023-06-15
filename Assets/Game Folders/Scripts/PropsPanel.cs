@@ -13,12 +13,12 @@ public class PropsPanel : MonoBehaviour
     [SerializeField] private Button b_primitive;
     [SerializeField] private Button b_roads;
 
-    private void Start()
+    private void OnEnable()
     {
         b_furniture.Select();
     }
 
-    private void OnEnable()
+    private void Start()
     {
         b_furniture.Select();
     }

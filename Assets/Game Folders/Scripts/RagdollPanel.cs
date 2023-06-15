@@ -7,13 +7,13 @@ public class RagdollPanel : MonoBehaviour
 {
     [SerializeField] private Button b_all;
 
-    private void Start()
-    {
-        
-    }
-
     private void OnEnable()
     {
         b_all.Select();
+    }
+
+    private void Start()
+    {
+        
     }
 }
