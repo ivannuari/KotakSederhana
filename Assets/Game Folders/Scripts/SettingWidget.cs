@@ -14,12 +14,17 @@ public class SettingWidget : Widget
     [SerializeField] private Button b_default;
     [SerializeField] private Button b_back;
 
+    private void OnEnable()
+    {
+        SetSensitivity(slider_sensitivity.value);
+    }
+
     private void Start()
     {
+
         slider_sensitivity.onValueChanged.AddListener((float val) =>
         {
-            float temp = val * 100f;
-            label_slider.text = temp.ToString("0");
+            SetSensitivity(val);
         });
 
         b_default.onClick.AddListener(() =>
@@ -28,5 +33,11 @@ public class SettingWidget : Widget
         });
 
         b_back.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Pause));
+    }
+
+    private void SetSensitivity(float value)
+    {
+        float temp = value * 100f;
+        label_slider.text = temp.ToString("0");
     }
 }
