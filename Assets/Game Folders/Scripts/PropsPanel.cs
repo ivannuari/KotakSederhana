@@ -17,14 +17,18 @@ public class PropsPanel : MonoBehaviour
     [SerializeField] private Button[] allFurnitures;
     [SerializeField] private Button[] allBuildings;
     [SerializeField] private Button[] allPeoples;
+    [SerializeField] private Button[] allPrimitives;
 
     [SerializeField] private ModelType currentProps = ModelType.Furniture;
 
     private void OnEnable()
     {
         b_furniture.Select();
+
         currentProps = ModelType.Furniture;
+
         HideAll();
+
         foreach (var item in allFurnitures)
         {
             item.gameObject.SetActive(true);
@@ -44,6 +48,11 @@ public class PropsPanel : MonoBehaviour
         }
 
         foreach (var item in allPeoples)
+        {
+            item.gameObject.SetActive(false);
+        }
+
+        foreach (var item in allPrimitives)
         {
             item.gameObject.SetActive(false);
         }
@@ -81,6 +90,16 @@ public class PropsPanel : MonoBehaviour
                 item.gameObject.SetActive(true);
             }
             currentProps = ModelType.People;
+        });
+
+        b_primitive.onClick.AddListener(() =>
+        {
+            HideAll();
+            foreach (var item in allPrimitives)
+            {
+                item.gameObject.SetActive(true);
+            }
+            currentProps = ModelType.Primitives;
         });
     }
 
