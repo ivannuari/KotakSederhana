@@ -63,7 +63,9 @@ public enum ModelType
     Building,
     People,
     Primitives,
-    Road
+    Road,
+    Cars,
+    Others
 }
 
 public enum PlaneType
