@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -174,14 +174,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.764151, g: 0.378471, b: 0.378471, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 819311b7a66a8f740b104cf9f9ffadf5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -708,7 +708,7 @@ GameObject:
   - component: {fileID: 572343318}
   - component: {fileID: 572343317}
   m_Layer: 5
-  m_Name: Image
+  m_Name: level_grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Big Green
+  m_text: Stones
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8de85dc8c11f3664ab6f2a7bb7802e9f, type: 2}
   m_sharedMaterial: {fileID: 7775210761818070368, guid: 8de85dc8c11f3664ab6f2a7bb7802e9f, type: 2}
@@ -1729,7 +1729,7 @@ GameObject:
   - component: {fileID: 1060498974}
   - component: {fileID: 1060498973}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: level_stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1869,6 +1869,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  levelType: 0
+  saveDataFiles:
+    allSaveData: []
 --- !u!4 &1229321226
 Transform:
   m_ObjectHideFlags: 0
@@ -2605,6 +2608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1695773797}
   - component: {fileID: 1695773796}
+  - component: {fileID: 1695773798}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -2689,6 +2693,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1695773798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695773795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1728311258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,7 +2726,7 @@ GameObject:
   - component: {fileID: 1728311261}
   - component: {fileID: 1728311260}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: level_sand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3341,7 +3365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Plane
+  m_text: Grass
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8de85dc8c11f3664ab6f2a7bb7802e9f, type: 2}
   m_sharedMaterial: {fileID: 7775210761818070368, guid: 8de85dc8c11f3664ab6f2a7bb7802e9f, type: 2}
@@ -3695,7 +3719,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Desert
+  m_text: Sand
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8de85dc8c11f3664ab6f2a7bb7802e9f, type: 2}
   m_sharedMaterial: {fileID: 7775210761818070368, guid: 8de85dc8c11f3664ab6f2a7bb7802e9f, type: 2}
@@ -4021,14 +4045,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.764151, g: 0.378471, b: 0.378471, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 851df1e5bd5100d4cb745a2dfcb4e46e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4097,14 +4121,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.764151, g: 0.378471, b: 0.378471, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: cdaa0c60fdc92ed47af5eb4257f20c89, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

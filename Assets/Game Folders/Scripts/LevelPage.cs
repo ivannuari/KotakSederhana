@@ -12,6 +12,22 @@ public class LevelPage : Page
 
     private void Start()
     {
-        b_levelA.onClick.AddListener(() => ChangeScene("Gameplay"));
+        b_levelA.onClick.AddListener(() =>
+        {
+            GameManager.Instance.SetLevelPlane(PlaneType.Grass);
+            ChangeScene("Gameplay");
+        });
+
+        b_levelB.onClick.AddListener(() =>
+        {
+            GameManager.Instance.SetLevelPlane(PlaneType.Sand);
+            ChangeScene("Gameplay");
+        });
+
+        b_levelC.onClick.AddListener(() =>
+        {
+            GameManager.Instance.SetLevelPlane(PlaneType.Stone);
+            ChangeScene("Gameplay");
+        });
     }
 }

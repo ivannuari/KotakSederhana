@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] private GameState currentState;
+    [SerializeField] private PlaneType levelType = PlaneType.Grass;
 
     private string savePath;
     [SerializeField] private SaveData saveDataFiles;
@@ -55,6 +56,16 @@ public class GameManager : MonoBehaviour
 
         string json = File.ReadAllText(path);
         saveDataFiles = JsonUtility.FromJson<SaveData>(json);
+    }
+
+    public void SetLevelPlane(PlaneType newType)
+    {
+        levelType = newType;
+    }
+
+    public PlaneType GetLevelPlane()
+    {
+        return levelType;
     }
 }
 
