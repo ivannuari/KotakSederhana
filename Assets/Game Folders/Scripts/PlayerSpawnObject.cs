@@ -8,14 +8,24 @@ public class PlayerSpawnObject : MonoBehaviour
     [SerializeField] private modelProps[] allProps;
     [SerializeField] private Transform spawner;
 
+    [SerializeField] private GameObject[] weapons;
+
     private void Start()
     {
         GameSetting.Instance.OnCreateProp += Instance_OnCreateProp;
+        GameSetting.Instance.OnChangeWeapon += Instance_OnChangeWeapon;
     }
 
     private void OnDisable()
     {
-        GameSetting.Instance.OnCreateProp -= Instance_OnCreateProp;
+        GameSetting.Instance.OnCreateProp -= Instance_OnCreateProp; 
+        GameSetting.Instance.OnChangeWeapon -= Instance_OnChangeWeapon;
+    }
+
+    private void Instance_OnChangeWeapon(bool isMainWeapon)
+    {
+        weapons[0].SetActive(isMainWeapon);
+        weapons[1].SetActive(!isMainWeapon);
     }
 
     private void Instance_OnCreateProp(ModelType tipe, int index)

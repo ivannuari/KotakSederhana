@@ -14,6 +14,7 @@ public class GamePage : Page
 
     [SerializeField] private GameObject numberWidget;
     private bool isNumberWidgetActive = false;
+    private bool isMainWeapon = true;
 
     private void Start()
     {
@@ -24,6 +25,12 @@ public class GamePage : Page
         {
             numberWidget.SetActive(!isNumberWidgetActive);
             isNumberWidgetActive = !isNumberWidgetActive;
+        });
+
+        b_switch.onClick.AddListener(() =>
+        {
+            GameSetting.Instance.ChangeWeapon(!isMainWeapon);
+            isMainWeapon = !isMainWeapon;
         });
     }
 }

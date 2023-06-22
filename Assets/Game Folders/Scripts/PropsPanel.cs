@@ -18,6 +18,7 @@ public class PropsPanel : MonoBehaviour
     [SerializeField] private Button[] allBuildings;
     [SerializeField] private Button[] allPeoples;
     [SerializeField] private Button[] allPrimitives;
+    [SerializeField] private Button[] allStreets;
 
     [SerializeField] private ModelType currentProps = ModelType.Furniture;
 
@@ -100,6 +101,16 @@ public class PropsPanel : MonoBehaviour
                 item.gameObject.SetActive(true);
             }
             currentProps = ModelType.Primitives;
+        });
+
+        b_street.onClick.AddListener(() =>
+        {
+            HideAll();
+            foreach (var item in allStreets)
+            {
+                item.gameObject.SetActive(true);
+            }
+            currentProps = ModelType.Street;
         });
     }
 

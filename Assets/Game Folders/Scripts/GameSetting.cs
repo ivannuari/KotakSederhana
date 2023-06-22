@@ -20,6 +20,9 @@ public class GameSetting : MonoBehaviour
     public delegate void CreatePropDelegate(ModelType tipe , int index);
     public event CreatePropDelegate OnCreateProp;
 
+    public delegate void ChangeWeaponDelegate(bool isMainWeapon);
+    public event ChangeWeaponDelegate OnChangeWeapon;
+
     private void Awake()
     {
         if(Instance == null)
@@ -45,6 +48,11 @@ public class GameSetting : MonoBehaviour
                 break;
 
         }
+    }
+
+    public void ChangeWeapon(bool isMain)
+    {
+        OnChangeWeapon?.Invoke(isMain);
     }
 
     public void CreateProp(ModelType tipe , int index)
