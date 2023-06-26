@@ -24,17 +24,22 @@ public class OptionPanel : MonoBehaviour
 
     private void Start()
     {
+        slider_speed.value = GameSetting.Instance.GetPlayerSpeed();
+        slider_jump.value = GameSetting.Instance.GetPlayerJump();
+
         SetSpeed(slider_speed.value);
         SetJump(slider_jump.value);
         SetFlyJump(slider_flySpeed.value);
 
         slider_speed.onValueChanged.AddListener((float v) =>
         {
+            GameSetting.Instance.SetPlayerSpeed(v);
             SetSpeed(v);
         });
 
         slider_jump.onValueChanged.AddListener((float v) =>
         {
+            GameSetting.Instance.SetPlayerJump(v);
             SetJump(v);
         });
 

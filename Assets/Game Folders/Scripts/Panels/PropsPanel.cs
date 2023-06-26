@@ -57,12 +57,15 @@ public class PropsPanel : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
+
+        foreach (var item in allStreets)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 
     private void Start()
     {
-        HideAll();
-
         b_furniture.onClick.AddListener(() =>
         {
             HideAll();

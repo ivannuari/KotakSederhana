@@ -42,6 +42,7 @@ public enum PageName
     Load,
     Game,
     Pause,
-    EditMode
+    EditMode,
+    Vehicle
 }
 

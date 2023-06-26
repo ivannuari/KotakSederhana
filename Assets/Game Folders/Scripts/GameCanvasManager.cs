@@ -45,6 +45,9 @@ public class GameCanvasManager : CanvasManager
             case GameState.EditMode:
                 SetPage(PageName.EditMode);
                 break;
+            case GameState.Vehicle:
+                SetPage(PageName.Vehicle);
+                break;
         }
     }
 

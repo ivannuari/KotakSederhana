@@ -42,8 +42,6 @@ public class VehiclePanel : MonoBehaviour
 
     private void Start()
     {
-        HideAll();
-
         b_car.onClick.AddListener(() =>
         {
             HideAll();

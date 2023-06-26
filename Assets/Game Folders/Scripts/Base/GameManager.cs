@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     public void ChangeState(GameState state)
     {
         currentState = state;
-        Debug.Log("CURRENT STATE : " + state);
         OnStateChange?.Invoke(state);
     }
 
@@ -81,7 +80,8 @@ public enum GameState
     Pause,
     Setting,
     Save,
-    EditMode
+    EditMode,
+    Vehicle
 }
 
 

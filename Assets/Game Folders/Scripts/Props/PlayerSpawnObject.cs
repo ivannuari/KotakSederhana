@@ -8,30 +8,28 @@ public class PlayerSpawnObject : MonoBehaviour
     [SerializeField] private modelProps[] allProps;
     [SerializeField] private Transform spawner;
 
-    [SerializeField] private GameObject[] weapons;
-
     private void Start()
     {
-        GameSetting.Instance.OnCreateProp += Instance_OnCreateProp;
-        GameSetting.Instance.OnChangeWeapon += Instance_OnChangeWeapon;
+        GameSetting.Instance.OnCreateProp += Instance_OnCreateProp;   
     }
 
     private void OnDisable()
     {
-        GameSetting.Instance.OnCreateProp -= Instance_OnCreateProp; 
-        GameSetting.Instance.OnChangeWeapon -= Instance_OnChangeWeapon;
+        GameSetting.Instance.OnCreateProp -= Instance_OnCreateProp;     
     }
 
-    private void Instance_OnChangeWeapon(bool isMainWeapon)
+    public Transform GetSpawnPosition()
     {
-        weapons[0].SetActive(isMainWeapon);
-        weapons[1].SetActive(!isMainWeapon);
+        return spawner;
     }
 
     private void Instance_OnCreateProp(ModelType tipe, int index)
     {
         modelProps tempProp = Array.Find(allProps, p => p.tipe == tipe);
         GameObject g = Instantiate(tempProp.prefab, spawner.position, Quaternion.identity);
+
+        GameSetting.Instance.AddSpawnObject(g);
+
         g.GetComponent<Props>().SetIndex(index);
 
         Vector3 newPos = transform.position;
