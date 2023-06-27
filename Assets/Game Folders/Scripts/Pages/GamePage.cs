@@ -26,10 +26,16 @@ public class GamePage : Page
     {
         GameSetting.Instance.OnChangeWeapon += Instance_OnChangeWeapon;
         GameSetting.Instance.OnInRangeOfCar += Instance_OnInRangeOfCar;
+        WeaponManager.Instance.OnToolsChange += Instance_OnToolsChange;
 
         b_pause.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Pause));
         b_build.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.EditMode));
-        b_enterCar.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Vehicle));
+
+        b_enterCar.onClick.AddListener(() =>
+        {
+            GameManager.Instance.ChangeState(GameState.Vehicle);
+        });
+
         b_delete.onClick.AddListener(GameSetting.Instance.DeleteSpawnObject);
 
         b_menu.onClick.AddListener(() =>
@@ -49,8 +55,11 @@ public class GamePage : Page
             GameSetting.Instance.ShootWeapon(isShoot);
             isShoot = !isShoot;
         });
+
+        WeaponManager.Instance.CheckWeapon();
     }
 
+    
 
     protected override void OnEnable()
     {
@@ -60,6 +69,9 @@ public class GamePage : Page
         {
             GameSetting.Instance.OnChangeWeapon += Instance_OnChangeWeapon;
             GameSetting.Instance.OnInRangeOfCar += Instance_OnInRangeOfCar;
+            WeaponManager.Instance.OnToolsChange += Instance_OnToolsChange;
+
+            WeaponManager.Instance.CheckWeapon();
         }
     }
 
@@ -67,11 +79,18 @@ public class GamePage : Page
     {
         GameSetting.Instance.OnChangeWeapon -= Instance_OnChangeWeapon;
         GameSetting.Instance.OnInRangeOfCar -= Instance_OnInRangeOfCar;
+        WeaponManager.Instance.OnToolsChange -= Instance_OnToolsChange;
     }
 
     private void Instance_OnInRangeOfCar(bool inRange)
     {
         b_enterCar.gameObject.SetActive(inRange);
+    }
+
+    private void Instance_OnToolsChange(WeaponType newType)
+    {
+        TMP_Text label = panel_weld.GetComponentInChildren<TMP_Text>();
+        label.text = newType.ToString();
     }
 
     private void Instance_OnChangeWeapon(bool isMainWeapon)

@@ -16,8 +16,11 @@ public class DinamytePanel : MonoBehaviour
         slider_timer.onValueChanged.AddListener((float value) =>
         {
             label_slider.text = $"{value.ToString("0")}";
+            GameSetting.Instance.activeSliderTime = value;
         });
 
         label_slider.text = slider_timer.value.ToString("0");
+
+        dropdown_dinamyte.onValueChanged.AddListener((int n) => GameSetting.Instance.SetFiresNumberActive(n));
     }
 }

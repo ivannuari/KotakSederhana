@@ -27,6 +27,8 @@ public class OptionPanel : MonoBehaviour
         slider_speed.value = GameSetting.Instance.GetPlayerSpeed();
         slider_jump.value = GameSetting.Instance.GetPlayerJump();
 
+        Debug.Log(GameSetting.Instance.GetPlayerSpeed());
+
         SetSpeed(slider_speed.value);
         SetJump(slider_jump.value);
         SetFlyJump(slider_flySpeed.value);
@@ -51,19 +53,16 @@ public class OptionPanel : MonoBehaviour
 
     private void SetSpeed(float value)
     {
-        float tempSpeed =  value * 100f;
-        label_speed.text = tempSpeed.ToString("0");
+        label_speed.text = value.ToString("0");
     }
 
     private void SetJump(float value)
     {
-        float tempJump = value * 100f;
-        label_jump.text = tempJump.ToString("0");
+        label_jump.text = value.ToString("0");
     }
 
     private void SetFlyJump(float value)
     {
-        float tempFlySpeed = value * 100f;
-        label_flySpeed.text = tempFlySpeed.ToString("0");
+        label_flySpeed.text = value.ToString("0");
     }
 }

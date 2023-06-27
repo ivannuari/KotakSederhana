@@ -14,9 +14,11 @@ public class SettingWidget : Widget
     [SerializeField] private Button b_default;
     [SerializeField] private Button b_back;
 
+    private float defaultSensitivity = 0.05f;
+
     private void OnEnable()
     {
-        SetSensitivity(slider_sensitivity.value);
+        SetSensitivity(GameSetting.Instance.GetSensitivity());
     }
 
     private void Start()
@@ -29,7 +31,7 @@ public class SettingWidget : Widget
 
         b_default.onClick.AddListener(() =>
         {
-
+            SetSensitivity(defaultSensitivity);
         });
 
         b_back.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Pause));
@@ -37,7 +39,7 @@ public class SettingWidget : Widget
 
     private void SetSensitivity(float value)
     {
-        float temp = value * 100f;
-        label_slider.text = temp.ToString("0");
+        label_slider.text = value.ToString("F2");
+        GameSetting.Instance.SetPlayerSensitivity(value);
     }
 }

@@ -19,7 +19,8 @@ public class PrometeoTouchInput : MonoBehaviour
 
     public void ButtonDown(){
       buttonPressed = true;
-      if(changeScaleOnPressed){
+      if(changeScaleOnPressed)
+        {
         rectTransform.localScale = initialScale * scaleDownMultiplier;
       }
     }

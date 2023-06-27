@@ -241,35 +241,47 @@ public class PrometeoCarController : MonoBehaviour
           }
         }
 
-        if(useTouchControls){
-          if(throttleButton != null && reverseButton != null &&
-          turnRightButton != null && turnLeftButton != null
-          && handbrakeButton != null){
+        
 
-            throttlePTI = throttleButton.GetComponent<PrometeoTouchInput>();
-            reversePTI = reverseButton.GetComponent<PrometeoTouchInput>();
-            turnLeftPTI = turnLeftButton.GetComponent<PrometeoTouchInput>();
-            turnRightPTI = turnRightButton.GetComponent<PrometeoTouchInput>();
-            handbrakePTI = handbrakeButton.GetComponent<PrometeoTouchInput>();
-            touchControlsSetup = true;
+    }
 
-          }else{
-            String ex = "Touch controls are not completely set up. You must drag and drop your scene buttons in the" +
-            " PrometeoCarController component.";
-            Debug.LogWarning(ex);
-          }
-        }
-
+    public void SetInputGameObject(GameObject left , GameObject right , GameObject gas , GameObject mundur ,GameObject brake)
+    {
+        turnLeftButton = left;
+        turnRightButton = right;
+        throttleButton = gas;
+        reverseButton = mundur;
+        handbrakeButton = brake;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (useTouchControls)
+        {
+            if (throttleButton != null && reverseButton != null &&
+            turnRightButton != null && turnLeftButton != null)
+            {
 
-      //CAR DATA
+                throttlePTI = throttleButton.GetComponent<PrometeoTouchInput>();
+                reversePTI = reverseButton.GetComponent<PrometeoTouchInput>();
+                turnLeftPTI = turnLeftButton.GetComponent<PrometeoTouchInput>();
+                turnRightPTI = turnRightButton.GetComponent<PrometeoTouchInput>();
+                handbrakePTI = handbrakeButton.GetComponent<PrometeoTouchInput>();
+                touchControlsSetup = true;
 
-      // We determine the speed of the car.
-      carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
+            }
+            else
+            {
+                String ex = "Touch controls are not completely set up. You must drag and drop your scene buttons in the" +
+                " PrometeoCarController component.";
+                Debug.LogWarning(ex);
+            }
+        }
+        //CAR DATA
+
+        // We determine the speed of the car.
+        carSpeed = (2 * Mathf.PI * frontLeftCollider.radius * frontLeftCollider.rpm * 60) / 1000;
       // Save the local velocity of the car in the x axis. Used to know if the car is drifting.
       localVelocityX = transform.InverseTransformDirection(carRigidbody.velocity).x;
       // Save the local velocity of the car in the z axis. Used to know if the car is going forward or backwards.
