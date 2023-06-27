@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunSatu : Gun
 {
     [SerializeField] private Transform ujung;
+    [SerializeField] private Transform ujungJauh;
     private GameObject objTemp;
 
     public override void OnShootObject(GameObject obj)
@@ -20,12 +21,22 @@ public class GunSatu : Gun
     {
         if(isOnShoot && gameObject.activeInHierarchy)
         {
-            objTemp.GetComponent<Rigidbody>().isKinematic = true;
-            objTemp.transform.position = ujung.position;
+            if (objTemp != null)
+            {
+                objTemp.GetComponent<Rigidbody>().isKinematic = true;
+                if (objTemp.CompareTag("Besar"))
+                {
+                    objTemp.transform.position = ujungJauh.position;
+                }
+                else
+                {
+                    objTemp.transform.position = ujung.position;
+                }
+            }
         }
         else
         {
-            if(objTemp!=null)
+            if(objTemp != null)
             {
                 objTemp.GetComponent<Rigidbody>().isKinematic = false;
                 objTemp = null;
@@ -33,8 +44,9 @@ public class GunSatu : Gun
         }
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         objTemp = null;
     }
 }

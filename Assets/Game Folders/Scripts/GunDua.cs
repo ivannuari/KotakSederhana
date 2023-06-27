@@ -12,11 +12,18 @@ public class GunDua : Gun
     protected override void Start()
     {
         base.Start();
+        
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
         WeaponManager.Instance.OnToolsChange += Instance_OnToolsChange;
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         WeaponManager.Instance.OnToolsChange -= Instance_OnToolsChange;
     }
 

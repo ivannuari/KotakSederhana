@@ -22,22 +22,20 @@ public class SaveWidget : Widget
             {
                 return;
             }
-
             //save Data
-            GameManager.Instance.SaveData(input_save.text);
             panel_info.SetActive(true);
-            StartCoroutine(HidePanel());
+            StartCoroutine(Loading());
+
+            panel_info.SetActive(false);
+            GameManager.Instance.ChangeState(GameState.Pause);
+            
+            GameManager.Instance.SaveData(input_save.text);
         });
     }
 
-    private void OnEnable()
+    IEnumerator Loading()
     {
-        panel_info.SetActive(false);
-    }
-
-    IEnumerator HidePanel()
-    {
-        yield return new WaitForSeconds(2f);
-        panel_info.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        
     }
 }

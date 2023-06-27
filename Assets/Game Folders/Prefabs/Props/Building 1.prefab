@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1045608395113051074}
   m_Layer: 6
   m_Name: Building 1
-  m_TagString: Untagged
+  m_TagString: Besar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 168810, guid: eaa7008022eea294c8a1908b158be2f1, type: 3}
       propertyPath: m_TagString
-      value: Props
+      value: Besar
       objectReference: {fileID: 0}
     - target: {fileID: 454118, guid: eaa7008022eea294c8a1908b158be2f1, type: 3}
       propertyPath: m_RootOrder
@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 116996, guid: ddb7443fe85862542a5db629cc6212b5, type: 3}
       propertyPath: m_TagString
-      value: Props
+      value: Besar
       objectReference: {fileID: 0}
     - target: {fileID: 417538, guid: ddb7443fe85862542a5db629cc6212b5, type: 3}
       propertyPath: m_RootOrder
@@ -293,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 122778, guid: 64fdd2e738a1ec0409e8cc180f8078e5, type: 3}
       propertyPath: m_TagString
-      value: Props
+      value: Besar
       objectReference: {fileID: 0}
     - target: {fileID: 494100, guid: 64fdd2e738a1ec0409e8cc180f8078e5, type: 3}
       propertyPath: m_RootOrder
@@ -401,7 +401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 169774, guid: e32702ffc863c26428487de0995b1f30, type: 3}
       propertyPath: m_TagString
-      value: Props
+      value: Besar
       objectReference: {fileID: 0}
     - target: {fileID: 441322, guid: e32702ffc863c26428487de0995b1f30, type: 3}
       propertyPath: m_RootOrder
@@ -533,7 +533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 119850, guid: 12f4fd5539dd3ed4cba438c8f8079a6a, type: 3}
       propertyPath: m_TagString
-      value: Props
+      value: Besar
       objectReference: {fileID: 0}
     - target: {fileID: 121512, guid: 12f4fd5539dd3ed4cba438c8f8079a6a, type: 3}
       propertyPath: m_Layer

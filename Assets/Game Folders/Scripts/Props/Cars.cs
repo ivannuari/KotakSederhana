@@ -6,17 +6,16 @@ using UnityEngine;
 public class Cars : Props
 {
     [SerializeField] private bool isDriving = false;
+    [SerializeField] private bool checkRange;
     [SerializeField] private PrometeoCarController[] allController;
 
     [SerializeField] private float checkPlayerInDistanceRadius;
-    [SerializeField] private float camSpeed = 2f;
     [SerializeField] private LayerMask playerLayer;
 
     [SerializeField] private GameObject[] allCams;
 
     private void Start()
     {
-        allController = GetComponentsInChildren<PrometeoCarController>();
         foreach (var item in allController)
         {
             item.enabled = isDriving;
@@ -38,10 +37,18 @@ public class Cars : Props
         switch (newState)
         {
             case GameState.Vehicle:
-                GameSetting.Instance.EnterCar(this, true);
+                if (checkRange)
+                {
+                    GameSetting.Instance.EnterCar(this, true);
+                    isDriving = true;
+                }
                 break;
             case GameState.Game:
-                DeactivateCar();
+                if (isDriving)
+                {
+                    DeactivateCar();
+                    isDriving = false;
+                }
                 break;
         }
     }
@@ -50,7 +57,7 @@ public class Cars : Props
     {
         base.FixedUpdate();
 
-        bool checkRange = Physics.CheckSphere(transform.GetChild(indexSelected).position, checkPlayerInDistanceRadius, playerLayer);
+        checkRange = Physics.CheckSphere(transform.GetChild(indexSelected).position, checkPlayerInDistanceRadius, playerLayer);
         GameSetting.Instance.SetRangeOfCar(checkRange);
     }
 

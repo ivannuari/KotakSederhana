@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     [SerializeField] private float _verticalVelocity;
     [SerializeField] private float JumpHeight;
-    [SerializeField] private float Gravity = -8.6f;
     [SerializeField] private float _terminalVelocity;
     [SerializeField] private float _jumpTimeoutDelta;
     [SerializeField] private float _fallTimeoutDelta;

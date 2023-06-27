@@ -8,9 +8,12 @@ public class PlayerSpawnObject : MonoBehaviour
     [SerializeField] private modelProps[] allProps;
     [SerializeField] private Transform spawner;
 
-    private void Start()
+    private void OnEnable()
     {
-        GameSetting.Instance.OnCreateProp += Instance_OnCreateProp;   
+        if(GameSetting.Instance != null)
+        {
+            GameSetting.Instance.OnCreateProp += Instance_OnCreateProp;
+        }
     }
 
     private void OnDisable()
@@ -25,6 +28,8 @@ public class PlayerSpawnObject : MonoBehaviour
 
     private void Instance_OnCreateProp(ModelType tipe, int index)
     {
+        Debug.Log(tipe.ToString());
+
         modelProps tempProp = Array.Find(allProps, p => p.tipe == tipe);
         GameObject g = Instantiate(tempProp.prefab, spawner.position, Quaternion.identity);
 
