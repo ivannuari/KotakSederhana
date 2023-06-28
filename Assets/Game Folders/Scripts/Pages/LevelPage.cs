@@ -14,18 +14,21 @@ public class LevelPage : Page
     {
         b_levelA.onClick.AddListener(() =>
         {
+            GameManager.Instance.adsManager.RequestInterstitial();
             GameManager.Instance.SetLevelPlane(PlaneType.Grass);
             ChangeScene("Gameplay");
         });
 
         b_levelB.onClick.AddListener(() =>
         {
+            GameManager.Instance.adsManager.RequestInterstitial();
             GameManager.Instance.SetLevelPlane(PlaneType.Sand);
             ChangeScene("Gameplay");
         });
 
         b_levelC.onClick.AddListener(() =>
         {
+            GameManager.Instance.adsManager.RequestInterstitial();
             GameManager.Instance.SetLevelPlane(PlaneType.Stone);
             ChangeScene("Gameplay");
         });

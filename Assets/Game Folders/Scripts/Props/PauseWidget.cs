@@ -14,11 +14,28 @@ public class PauseWidget : Widget
 
     private void Start()
     {
-        b_resume.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Game));
-        b_save.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Save));
-        b_setting.onClick.AddListener(() => GameManager.Instance.ChangeState(GameState.Setting));
+        b_resume.onClick.AddListener(() =>
+        {
+            GameManager.Instance.adsManager.RequestInterstitial();
+            Time.timeScale = 1f;
+            GameManager.Instance.ChangeState(GameState.Game);
+        });
+
+        b_save.onClick.AddListener(() =>
+        {
+            GameManager.Instance.adsManager.RequestInterstitial();
+            GameManager.Instance.ChangeState(GameState.Save);
+        });
+
+        b_setting.onClick.AddListener(() =>
+        {
+            GameManager.Instance.adsManager.RequestInterstitial();
+            GameManager.Instance.ChangeState(GameState.Setting);
+        });
+
         b_exit.onClick.AddListener(() =>
         {
+            GameManager.Instance.adsManager.RequestInterstitial();
             Time.timeScale = 1f;
             SceneManager.LoadScene("Main Menu");
         });

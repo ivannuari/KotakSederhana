@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public AdsManager adsManager;
 
     [SerializeField] private GameState currentState;
     [SerializeField] private PlaneType levelType = PlaneType.Grass;
@@ -29,7 +30,14 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
+        adsManager = GetComponent<AdsManager>();
+
         savePath = Application.persistentDataPath;
+
+        if(File.Exists(savePath + "saveData.json"))
+        {
+            LoadData();
+        }
     }
 
     public void ChangeState(GameState state)
@@ -41,8 +49,22 @@ public class GameManager : MonoBehaviour
     public void SaveData(string saveName)
     {
         string path = savePath + "saveData.json";
-
-        SaveFile newFile = new SaveFile(saveName);
+        int n = 0;
+        switch (GameManager.Instance.GetLevelPlane())
+        {
+            case PlaneType.Grass:
+                n = 0;
+                break;
+            case PlaneType.Sand:
+                n = 1;
+                break;
+            case PlaneType.Stone:
+                n = 2;
+                break;
+            default:
+                break;
+        }
+        SaveFile newFile = new SaveFile(saveName , n);
         saveDataFiles.allSaveData.Add(newFile);
 
         string json = JsonUtility.ToJson(saveDataFiles);
@@ -65,6 +87,11 @@ public class GameManager : MonoBehaviour
     public PlaneType GetLevelPlane()
     {
         return levelType;
+    }
+
+    public SaveData GetSaveData()
+    {
+        return saveDataFiles;
     }
 }
 
@@ -96,9 +123,11 @@ public class SaveData
 public class SaveFile
 {
     public string nama;
+    public int nomorPlane;
 
-    public SaveFile(string saveName)
+    public SaveFile(string saveName , int level)
     {
         nama = saveName;
+        nomorPlane = level;
     }
 }
